@@ -19,7 +19,7 @@ MAGENTABG="$(printf '\033[45m')"  CYANBG="$(printf '\033[46m')"
 WHITEBG="$(printf '\033[47m')"    BLACKBG="$(printf '\033[40m')"
 
 ## Wallpaper directory
-DIR="/usr/share/dynamic-wallpaper/images"
+DIR="$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )/../share/dwall/images"
 HOUR=`date +%k`
 
 ## Wordsplit in ZSH
@@ -48,7 +48,7 @@ trap exit_on_signal_SIGTERM SIGTERM
 
 ## Prerequisite
 Prerequisite() { 
-    dependencies=(feh xrandr crontab)
+    dependencies=(feh xrandr)
     for dependency in "${dependencies[@]}"; do
         type -p "$dependency" &>/dev/null || {
             echo -e ${RED}"[!] ERROR: Could not find ${GREEN}'${dependency}'${RED}, is it installed?" >&2
